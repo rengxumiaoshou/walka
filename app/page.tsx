@@ -13,7 +13,7 @@ const menuItems = [
 ];
 
 export default function AboriginalTourismHomePage() {
-    const basePath = process.env.NODE_ENV === 'production' ? "walka" : '';
+    const basePath = process.env.NODE_ENV === 'production' ? "/walka" : '';
     console.log(basePath);
     return (
         <Layout style={{
