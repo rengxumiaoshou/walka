@@ -8,7 +8,10 @@ const nextConfig: NextConfig = {
     basePath: isProd ? "/walka" : "",
     assetPrefix: isProd ? "/walka": "",
     eslint: {
-    ignoreDuringBuilds: true,
+        ignoreDuringBuilds: true,
+    },
+    env: {
+        NEXT_PUBLIC_BASE_PATH: isProd ? '/walka' : '',
     }
 };
 

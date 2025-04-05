@@ -13,11 +13,12 @@ const menuItems = [
 ];
 
 export default function AboriginalTourismHomePage() {
+    const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
     console.log(Layout)
     return (
         <Layout style={{
             minHeight: '100vh',
-            backgroundImage: 'url(/assets/aboriginal/background.png)',
+            backgroundImage: `url(${basePath}/assets/aboriginal/background.png)`,
             backgroundSize: 'cover',
             backgroundPosition: 'center'
         }}>
@@ -30,7 +31,7 @@ export default function AboriginalTourismHomePage() {
                 width: '100%',
                 zIndex: 100
             }}>
-                <Image src="/assets/aboriginal/logo.png" alt="Walka Logo" style={{height: 40, marginRight: 24}}></Image>
+                <Image src={`${basePath}/assets/aboriginal/logo.png`} alt="Walka Logo" style={{height: 40, marginRight: 24}}></Image>
                 <Menu mode="horizontal" theme="dark" style={{background: 'transparent', flex: 1}} defaultSelectedKeys={['1']}>
                     {menuItems.map(item => (
                         <Menu.Item key={item.key}>{item.label}</Menu.Item>
