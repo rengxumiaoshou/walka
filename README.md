@@ -11,7 +11,7 @@ to manage your npm enviroments.
 use
 
 ```bash
-npm install
+pnpm install
 ```
 to get all requirements ready.
 
