@@ -17,10 +17,19 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: . # 明确设置工作目录为项目根目录
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        
+
+      - name: Show current directory & files
+        run: |
+          pwd
+          ls -al
+
       - name: Install pnpm
         uses: pnpm/action-setup@v2
         with:
@@ -30,8 +39,11 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "23"
+          node-version: "23" 
           cache: pnpm
+
+      - name: Confirm lockfile exists
+        run: test -f pnpm-lock.yaml && echo "✅ Lock file found"
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
@@ -45,9 +57,9 @@ jobs:
         uses: actions/cache@v4
         with:
           path: .next/cache
-          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/pnpm-lock.yaml') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
+          key: ${{ runner.os }}-nextjs-${{ hashFiles('pnpm-lock.yaml') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
           restore-keys: |
-            ${{ runner.os }}-nextjs-${{ hashFiles('**/pnpm-lock.yaml') }}-
+            ${{ runner.os }}-nextjs-${{ hashFiles('pnpm-lock.yaml') }}-
 
       - name: Build with Next.js
         run: pnpm next build
@@ -67,3 +79,4 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
