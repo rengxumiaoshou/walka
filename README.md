@@ -1,4 +1,19 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## Preparation
+For Next.js, Node.js version "^18.18.0 || ^19.8.0 || >= 20.0.0" is required.
+
+use
+```bash
+nvm use ver.no.
+```
+to manage your npm enviroments.
+
+use
+
+```bash
+npm install
+```
+to get all requirements ready.
 
 ## Getting Started
 
