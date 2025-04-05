@@ -13,9 +13,8 @@ const menuItems = [
 ];
 
 export default function AboriginalTourismHomePage() {
-    const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
-    console.log(process.env.NODE_ENV)
-    console.log(Layout)
+    const basePath = process.env.NODE_ENV === 'production' ? "walka/out" : '';
+    console.log(basePath);
     return (
         <Layout style={{
             minHeight: '100vh',
