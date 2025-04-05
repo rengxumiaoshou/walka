@@ -31,13 +31,12 @@ export default function AboriginalTourismHomePage() {
                 zIndex: 100
             }}>
                 <Image src="/assets/aboriginal/logo.png" alt="Walka Logo" style={{height: 40, marginRight: 24}}></Image>
-                <Menu mode="horizontal" theme="dark" style={{background: 'transparent', flex: 1}}
-                      defaultSelectedKeys={['1']}>
-                    <Menu.Item key="1"><a href="#about">About</a></Menu.Item>
-                    <Menu.Item key="2"><a href="#tours">Tours</a></Menu.Item>
-                    <Menu.Item key="3"><a href="#support">Support</a></Menu.Item>
-                    <Menu.Item key="4"><a href="#contact">Contact</a></Menu.Item>
+                <Menu mode="horizontal" theme="dark" style={{background: 'transparent', flex: 1}} defaultSelectedKeys={['1']}>
+                    {menuItems.map(item => (
+                        <Menu.Item key={item.key}>{item.label}</Menu.Item>
+                    ))}
                 </Menu>
+
             </Header>
 
             <Content style={{padding: '48px 24px', paddingTop: '60px', paddingBottom: '60px'}}>
@@ -58,7 +57,7 @@ export default function AboriginalTourismHomePage() {
                 <div id="about" style={{marginTop: 64, background: 'rgba(0, 0, 0, 0.8)', padding: 24}}>
                     <Title level={2} style={{color: '#FFD666'}}>Our Mission</Title>
                     <Paragraph style={{color: '#FFF1B8', fontSize: '1.2rem', maxWidth: 800}}>
-                        'Walka' means pattern, story, or journey. We are a platform that promotes sustainable tourism
+                        &apos;Walka&apos; means pattern, story, or journey. We are a platform that promotes sustainable tourism
                         while preserving and supporting Aboriginal and Yizu traditions. We partner with local guides,
                         artists, and historians to offer immersive cultural experiences.
                     </Paragraph>
