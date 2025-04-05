@@ -14,6 +14,7 @@ const menuItems = [
 
 export default function AboriginalTourismHomePage() {
     const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
+    console.log(process.env.NODE_ENV)
     console.log(Layout)
     return (
         <Layout style={{
