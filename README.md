@@ -110,7 +110,7 @@
    pnpm install -g @cablate/mcp-google-map
    ```
 
-3. Set your **environment** variable, open [.env_template](.env_template), change its name to `.env`, and fill in your Google API key:
+3. Set your **environment** variable, open [.template_env](.template_env), change its name to `.env`, and fill in your Google API key:
     ```text
     API_KEY_GEMINI="?"
     API_KEY_MCP="?"

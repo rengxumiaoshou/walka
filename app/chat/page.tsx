@@ -6,38 +6,26 @@ import GoogleMap from '../components/GoogleMap';
 
 export default function ChatPage() {
   const searchParams = useSearchParams();
-  const queryParam = searchParams.get('query') || '';
+  const query = searchParams.get('query') || '';
 
   const [input, setInput] = useState('');
   const [plan, setPlan] = useState<any>(null);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    if (queryParam) {
-      setInput(queryParam);
-      handleSubmit(queryParam);
-    }
-  }, [queryParam]);
-
-  const handleSubmit = async (customInput?: string) => {
-    const message = customInput ?? input;
-    if (!message.trim()) return;
-
-    setInput('');
-    setLoading(true);
-    setPlan(null);
-
-    try {
+    async function fetchInitialPlan() {
       const res = await fetch('/api/gemini/init', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message }),
+        body: JSON.stringify({ message: query })
       });
-
       const data = await res.json();
+      console.log(query)
+      console.log('Plan:', data);
       setPlan(data);
 
-      // 💾 自动保存 JSON 文件
+      /*
+            // 💾 自动保存 JSON 文件
       const blob = new Blob([JSON.stringify(data, null, 2)], {
         type: 'application/json',
       });
@@ -55,8 +43,37 @@ export default function ChatPage() {
     } finally {
       setLoading(false);
     }
-  };
+       */
+    }
 
+    if (query) {
+      fetchInitialPlan();
+    }
+  }, [query]);
+
+  const handleSubmit = async (customInput?: string) => {
+    const message = customInput ?? input;
+    if (!message.trim()) return;
+
+    setInput('');
+    setLoading(true);
+    setPlan(null);
+
+    try {
+      const res = await fetch('/api/gemini/update', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message }),
+      });
+
+      const data = await res.json();
+      setPlan(data);
+    } catch (err) {
+        console.error(err);
+    } finally {
+      setLoading(false);
+    }
+  }
   return (
     <>
       {/* 左侧：旅行计划展示区 */}

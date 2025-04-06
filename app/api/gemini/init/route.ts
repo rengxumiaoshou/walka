@@ -13,7 +13,7 @@ export async function POST(req: NextRequest){
         // we can support stream response here
         const response = await ai.models.generateContent(
             {
-                model: "gemini-2.0-flash",
+                model: "gemini-1.5-flash",
                 contents: `${GeminiPromptStructTourism}\n\n
                          Users query:${message}\n
                          `
