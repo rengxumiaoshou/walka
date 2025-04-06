@@ -24,7 +24,7 @@ export default function AboriginalTourismHomePage() {
     const router = useRouter();
     async function handleSubmit() {
         // TODO: if query empty, in the same time, check the route.ts
-        router.push(`/generate?query=${encodeURIComponent(query)}`);
+        router.push(`/chat?query=${encodeURIComponent(query)}`);
     }
 
     return (
