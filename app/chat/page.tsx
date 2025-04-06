@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
+import GoogleMap from '../components/GoogleMap';
 
 export default function ChatPage() {
   const searchParams = useSearchParams();
@@ -47,7 +48,7 @@ export default function ChatPage() {
         .toISOString()
         .slice(0, 19)
         .replace(/[:T]/g, '-')}.json`;
-      a.click();
+      // a.click(); // 禁用此行以禁用自动下载json文件
       URL.revokeObjectURL(url);
     } catch (err) {
       console.error(err);
@@ -76,7 +77,7 @@ export default function ChatPage() {
       <section className="w-1/2 p-6 flex flex-col h-screen">
         {/* 🗺️ 路线图占位符区域 */}
         <div className="flex-1 border rounded bg-gray-50 flex items-center justify-center text-gray-400 text-lg italic">
-          🗺️ 此处将显示路线图（地图组件占位符）
+          {plan && <GoogleMap locations={plan.plan} />}
         </div>
 
         {/* 输入框 */}
