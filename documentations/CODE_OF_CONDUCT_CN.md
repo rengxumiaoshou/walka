@@ -26,12 +26,12 @@
 3. Bonus: 用这些地名以及先后顺序做出导航
 
 ### TODO2:
-1. 渲染出旅行计划的初始样式![img.png](documentations/img.png)
+1. 渲染出旅行计划的初始样式![img.png](img.png)
 2. 于TODO1的地图合并(仅限前端样式)
 
 ### TODO3:
 1. 用户只能对左侧的旅行计划提出修改意见
-2. 渲染最终效果![img_1.png](documentations/img_1.png), 此处应该调用图片API.
+2. 渲染最终效果![img_1.png](img_1.png), 此处应该调用图片API.
 
 ### TODO后端1:
 1. 设计一个简单的用户登录注册系统
