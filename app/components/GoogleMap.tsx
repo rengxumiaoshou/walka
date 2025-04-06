@@ -52,7 +52,7 @@ const GoogleMap = ({ locations, style }: GoogleMapProps) => {
               resolve({ position: results[0].geometry.location.toJSON(), name: item.name });
             } else {
               console.warn(`Geocoding failed for ${item.query} with status: ${status}`);
-              resolve(null); // ⬅ 跳过无法解析的地点
+              resolve(null);
             }
           });
         });
@@ -91,7 +91,7 @@ const GoogleMap = ({ locations, style }: GoogleMapProps) => {
     loadScript().then(initMap);
   }, [locations]);
 
-  return <div ref={mapRef} style={style || { height: '400px', width: '100%' }} />;
+  return <div ref={mapRef} style={style || { height: '100%', width: '100%' }} />;
 };
 
 export default GoogleMap;
