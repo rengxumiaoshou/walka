@@ -1,9 +1,11 @@
 'use client';
-import { Layout, Menu, Typography, Row, Col, Card, Image } from 'antd';
+import { Layout, Menu, Typography, Row, Col, Card, Image, Input, Button, Space } from 'antd';
 import 'antd/dist/reset.css';
-
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 const { Header, Content, Footer } = Layout;
 const { Title, Paragraph } = Typography;
+
 
 const menuItems = [
   { key: '1', label: <a href="#about">About</a> },
@@ -12,9 +14,19 @@ const menuItems = [
   { key: '4', label: <a href="#contact">Contact</a> },
 ];
 
+
+
 export default function AboriginalTourismHomePage() {
+    const [query, setQuery] = useState('');
+    const [plan, setPlan] = useState<any>(null);
+    const [loading, setLoading] = useState(false);
     const basePath = process.env.NODE_ENV === 'production' ? "/walka" : '';
-    console.log(basePath);
+    const router = useRouter();
+    async function handleSubmit() {
+        // TODO: if query empty, in the same time, check the route.ts
+        router.push(`/generate?query=${encodeURIComponent(query)}`);
+    }
+
     return (
         <Layout style={{
             minHeight: '100vh',
@@ -55,6 +67,61 @@ export default function AboriginalTourismHomePage() {
                     </Paragraph>
                 </div>
 
+                <div id="ai-tour" style={{ marginTop: 64, background: 'rgba(0, 0, 0, 0.85)', padding: 24 }}>
+                    <Title level={2} style={{ color: '#FFD666' }}>Smart Tour Planner 🤖</Title>
+                    <Paragraph style={{ color: '#FFF1B8' }}>
+                        Enter your travel idea and let Gemini generate a plan for you.
+                    </Paragraph>
+
+                    <Input
+                        placeholder="e.g. 杭州一日游"
+                        value={query}
+                        onChange={(e) => setQuery(e.target.value)}
+                        style={{
+                            backgroundColor: '#3E2A18',
+                            color: '#FFF1B8',
+                            borderColor: '#FFD666'
+                        }}
+                    />
+                    <Button
+                        onClick={handleSubmit}
+                        disabled={loading}
+                        style={{
+                            background: '#FFD666',
+                            color: '#3E2A18',
+                            padding: '8px 16px',
+                            border: 'none',
+                            borderRadius: 6,
+                            cursor: 'pointer'
+                        }}
+                    >
+                        {loading ? 'Generating...' : 'Generate Plan'}
+                    </Button>
+
+                    {plan && plan.plan && (
+                        <div style={{ marginTop: 24 }}>
+                            <Title level={3} style={{ color: '#FFF1B8' }}>🗓 {plan.date}</Title>
+                            <ul style={{ listStyle: 'none', padding: 0 }}>
+                                {plan.plan.map((item: any, idx: number) => (
+                                    <li key={idx} style={{
+                                        marginBottom: 16,
+                                        padding: 12,
+                                        background: '#3E2A18',
+                                        color: '#FFF1B8',
+                                        borderRadius: 8
+                                    }}>
+                                        <p><strong>🕒 Time:</strong> {item.time}</p>
+                                        <p><strong>📍 Location:</strong> {item.name}</p>
+                                        <p><strong>🔍 Query:</strong> {item.query}</p>
+                                        <p><strong>🏷️ Type:</strong> {item.type}</p>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    )}
+                </div>
+
+
                 <div id="about" style={{marginTop: 64, background: 'rgba(0, 0, 0, 0.8)', padding: 24}}>
                     <Title level={2} style={{color: '#FFD666'}}>Our Mission</Title>
                     <Paragraph style={{color: '#FFF1B8', fontSize: '1.2rem', maxWidth: 800}}>
@@ -63,6 +130,9 @@ export default function AboriginalTourismHomePage() {
                         artists, and historians to offer immersive cultural experiences.
                     </Paragraph>
                 </div>
+
+
+
 
                 <div id="tours" style={{marginTop: 64, background: 'rgba(0, 0, 0, 0.8)', padding: 24}}>
                     <Title level={2} style={{color: '#FFD666'}}>Featured Cultural Journeys</Title>
