@@ -24,7 +24,7 @@ export default function AboriginalTourismHomePage() {
     const router = useRouter();
     async function handleSubmit() {
         if (!query.trim()) {
-            alert('Say somthing... Tell me more');
+            alert('Say something... Tell me more');
             return;
         }
         router.push(`/chat?query=${encodeURIComponent(query)}`);
