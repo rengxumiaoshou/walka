@@ -13,7 +13,7 @@
 
 - **Frontend**: Next.js (App Router), React, Ant Design
 - **AI Integration**: [Google Generative AI (Gemini)](https://ai.google.dev/)
-- **Language**: TypeScript
+- **Language**: TypeScript javascript
 - **Styling**: CSS with theme-based customization
 
 ## 🚀 How It Works
