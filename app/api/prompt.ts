@@ -26,14 +26,7 @@ Example JSON output:
       "name": "West Lake",
       "query": "West Lake Hangzhou",
       "type": "outdoor",
-      "info": "Enjoy a peaceful morning walk around the scenic lake while savoring local breakfast delicacies."
-    },
-    {
-      "time": "10:30-12:00",
-      "name": "Ancient Tea House",
-      "query": "Traditional Hangzhou tea house",
-      "type": "cultural",
-      "info": "Experience traditional tea tasting and learn about the history of tea in Hangzhou."
+      "info": "Enjoy a peaceful morning walk around the scenic lake."
     }
   ]
 }
