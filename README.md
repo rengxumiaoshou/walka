@@ -1,4 +1,4 @@
-** 🛍\ Walka: Smart Cultural Journey Planner
+# 🛍\ Walka: Smart Cultural Journey Planner
 
 **Walka** is an AI-powered cultural tourism assistant designed to help users plan meaningful, personalized travel experiences. By integrating Google's Gemini API with a structured itinerary format, Walka turns natural language input into organized, actionable travel plans in seconds.
 
