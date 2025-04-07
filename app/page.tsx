@@ -8,10 +8,10 @@ const { Title, Paragraph } = Typography;
 
 
 const menuItems = [
-  { key: '1', label: <a href="#about">About</a> },
-  { key: '2', label: <a href="#tours">Tours</a> },
-  { key: '3', label: <a href="#support">Support</a> },
-  { key: '4', label: <a href="#contact">Contact</a> },
+    { key: '1', label: <a href="#about">About</a> },
+    { key: '2', label: <a href="#tours">Tours</a> },
+    { key: '3', label: <a href="#support">Support</a> },
+    { key: '4', label: <a href="#contact">Contact</a> },
 ];
 
 
@@ -23,7 +23,10 @@ export default function AboriginalTourismHomePage() {
     const basePath = process.env.NODE_ENV === 'production' ? "/walka" : '';
     const router = useRouter();
     async function handleSubmit() {
-        // TODO: if query empty, in the same time, check the route.ts
+        if (!query.trim()) {
+            alert('请输入旅行计划');
+            return;
+        }
         router.push(`/chat?query=${encodeURIComponent(query)}`);
     }
 
