@@ -13,6 +13,13 @@
    npx prisma migrate dev 
    ```
    此命令做了两件事：
-    它为此迁移生成了一个新的 SQL 迁移文件
-    它针对数据库运行了 SQL 迁移文件
-    您可以在新创建的目录中检查生成的 SQL 迁移文件`prisma/migrations`。
+   它为此迁移生成了一个新的 SQL 迁移文件
+   它针对数据库运行了 SQL 迁移文件
+   您可以在新创建的目录中检查生成的 SQL 迁移文件`prisma/migrations`。
+4. `next dev` 打开项目
+5. 打开POSTMAN, 右上角的environment记得添加`baseUrl`，值为`http://localhost:3000`
+6. 找到`Integration Testing`里的`Register`, 点开`Body/raw`. `Email`是unique键
+   ![img_2.png](img_2.png) 你可以测试任意`email`和`password`是否返回回来`200OK`
+
+7. 找到`Integration Testing`里的`Login`, 点开`Body/raw`. `Email`是unique键
+   ![img_3.png](img_3.png) 你可以测试任意`email`和`password`是否返回回来`200OK`
