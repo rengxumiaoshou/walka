@@ -15,10 +15,12 @@ export async function PUT(req: Request) {
         where: { email },
     });
 
-    if (!existingUser || password !== existingUser.password){
-        return NextResponse.json({error: 'Check inputs'}, {status: 401})
-    };
-
+    if (!existingUser) {
+        return NextResponse.json({ error: 'User does not exist' }, { status: 401 });
+    }
+    if (password !== existingUser.password) {
+        return NextResponse.json({ error: 'Incorrect password' }, { status: 401 });
+    }
     if (existingUser.password == newPassword){
         return NextResponse.json({message: 'New password can not be the same as before'}, { status: 400 })
     };
