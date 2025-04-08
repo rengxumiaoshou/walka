@@ -8,7 +8,7 @@ export async function PUT(req:Request) {
     const { email, newName, password } = body;
 
     if (!email || !password) {
-        return NextResponse.json({ error: 'need email and pass word to identify'}, { status: 400 });
+        return NextResponse.json({ error: 'need email and password to identify'}, { status: 400 });
     }
 
 
