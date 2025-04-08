@@ -25,7 +25,7 @@ export async function PUT(req:Request) {
       }
         
       if (existingUser.name == newName) {
-            return NextResponse.json({ message: 'Same name' }, { status: 401 });
+            return NextResponse.json({ message: 'Same name' }, { status: 400 });
         }
         
       
