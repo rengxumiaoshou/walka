@@ -22,7 +22,7 @@ export async function PUT(req: Request) {
         return NextResponse.json({ error: 'Incorrect password' }, { status: 401 });
     }
     if (existingUser.password == newPassword){
-        return NextResponse.json({message: 'New password can not be the same as before'}, { status: 400 })
+        return NextResponse.json({message: 'New password cannot be the same as before'}, { status: 400 })
     };
 
     const updatedUser = await prisma.user.update({
